@@ -1,34 +1,48 @@
-# Comparação de Modelos de Regressão Linear para Previsão de Vendas
+<div align="center">
 
-## Sobre o projeto
+# 📊 Comparação de Modelos de Regressão Linear
 
-Este projeto tem como objetivo desenvolver e comparar dois modelos de **Regressão Linear** utilizando Python e bibliotecas de análise de dados e Machine Learning.
+### Previsão de vendas com publicidade e descontos
 
-O experimento busca avaliar se a inclusão da variável **desconto**, além do investimento em publicidade, contribui para melhorar a previsão da quantidade de vendas de uma loja.
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white)](https://matplotlib.org/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 
-Para isso, são desenvolvidos dois modelos:
+**Um projeto didático de Machine Learning para treinar, comparar e avaliar modelos de regressão linear.**
 
-- **Modelo A:** utiliza exclusivamente o investimento em publicidade como variável de entrada.
-- **Modelo B:** utiliza o investimento em publicidade e o percentual de desconto como variáveis de entrada.
+</div>
 
-Ambos são treinados com os mesmos dados e avaliados utilizando o Erro Absoluto Médio (MAE).
+---
 
-## Tecnologias utilizadas
+## 🎯 Sobre o projeto
 
-- **Python:** linguagem utilizada no desenvolvimento.
-- **Pandas:** manipulação e análise dos dados.
-- **Matplotlib:** geração de gráficos e visualizações.
-- **Scikit-learn:** implementação e avaliação dos modelos de regressão linear.
+Este experimento investiga se incluir o **percentual de desconto**, além do investimento em publicidade, ajuda a prever a quantidade de vendas de uma loja.
 
-## Estrutura do projeto
+Dois modelos são treinados com os mesmos dados e comparados pelo **Erro Absoluto Médio (MAE)**:
+
+| Modelo | Variáveis de entrada |
+|:--|:--|
+| **A** | Investimento em publicidade |
+| **B** | Investimento em publicidade e percentual de desconto |
+
+A escolha é feita com os dados de validação; em seguida, o modelo selecionado é avaliado no conjunto de teste.
+
+## 🧰 Tecnologias
+
+- **Python** — linguagem do projeto.
+- **Pandas** — leitura e manipulação dos dados.
+- **Matplotlib** — criação dos gráficos.
+- **Scikit-learn** — treinamento da regressão linear e cálculo do MAE.
+
+## 📁 Estrutura do projeto
 
 ```text
-projeto/
-│
-├── exercicio.py
+.
+├── Exercicio.py
 ├── vendas_loja.csv
 ├── requirements.txt
-│
+├── README.MD
 └── resultados/
     ├── 01_dados_treino.png
     ├── 02_comparacao_validacao.png
@@ -36,140 +50,91 @@ projeto/
     └── resultado_teste.csv
 ```
 
-## Base de dados
+Os arquivos dentro de `resultados/` são criados pelo programa quando ele é executado.
 
-O projeto utiliza o arquivo `vendas_loja.csv`, composto por 60 registros simulados para fins didáticos.
+## 🚀 Como executar
 
-A base possui quatro colunas:
+### Pré-requisitos
 
-| Coluna | Descrição |
-|---|---|
-| dia | Identificador do período, de 1 a 60. |
-| publicidade | Investimento em publicidade, em reais. |
-| desconto | Percentual de desconto aplicado. |
-| vendas | Quantidade de unidades vendidas. |
+- Python instalado;
+- terminal aberto na pasta do projeto;
+- acesso à internet para instalar as dependências.
 
-A variável `vendas` representa o objetivo da previsão, enquanto as demais variáveis são utilizadas conforme a configuração de cada modelo.
-
-## Preparação do ambiente
-
-### 1. Pré-requisitos
-
-- Python instalado.
-- Arquivos do projeto disponíveis localmente.
-- Acesso à internet para instalação das dependências.
-
-### 2. Instalação das dependências
-
-Com o terminal aberto na pasta do projeto, execute:
+### Instale as dependências
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-O arquivo `requirements.txt` contém as seguintes bibliotecas:
+### Execute o experimento
 
-- pandas
-- matplotlib
-- scikit-learn
-
-### 3. Execução
-
-Para executar o programa:
+Com exibição das janelas dos gráficos:
 
 ```bash
-python exercicio.py
+python Exercicio.py
 ```
 
-Também é possível executar sem abrir janelas de gráficos, salvando diretamente os resultados:
+Sem abrir janelas (por exemplo, em ambientes sem interface gráfica):
 
 ```bash
-python exercicio.py --sem-janelas
+python Exercicio.py --sem-janelas
 ```
 
-Os gráficos e arquivos CSV serão armazenados automaticamente na pasta `resultados/`.
+Os gráficos e arquivos CSV são salvos automaticamente em `resultados/`.
 
-## Desenvolvimento do experimento
+## 🗃️ Dados utilizados
 
-O experimento foi dividido em nove etapas:
+O arquivo `vendas_loja.csv` contém **60 registros simulados** para fins didáticos:
 
-1. **Carregamento dos dados:** leitura do CSV e verificação da integridade da base.
-2. **Separação dos períodos:** divisão dos 60 registros em treinamento (40), validação (10) e teste (10).
-3. **Treinamento do modelo A:** utilização da variável publicidade.
-4. **Treinamento do modelo B:** utilização das variáveis publicidade e desconto.
-5. **Geração das previsões:** aplicação dos modelos sobre os dados de validação.
-6. **Cálculo dos erros:** comparação entre previsões e valores reais utilizando MAE.
-7. **Comparação dos modelos:** escolha do modelo com menor erro na validação.
-8. **Avaliação final:** aplicação do modelo escolhido sobre os dados de teste.
-9. **Nova previsão:** estimativa de vendas para um cenário hipotético.
+| Coluna | Descrição |
+|:--|:--|
+| `dia` | Identificador do período, de 1 a 60. |
+| `publicidade` | Investimento em publicidade, em reais. |
+| `desconto` | Percentual de desconto aplicado. |
+| `vendas` | Quantidade de unidades vendidas (alvo da previsão). |
 
-## Visualização dos resultados
+A divisão dos dados é fixa: **40 registros para treino**, **10 para validação** e **10 para teste**.
 
-### 1. Dados de treinamento
+## 📈 Resultados
 
-Gráfico de dispersão representando a relação entre o investimento em publicidade e a quantidade de vendas nos 40 registros utilizados para treinamento.
-
-![Dados de treinamento](resultados/01_dados_treino.png)
-
-### 2. Comparação dos modelos na validação
-
-Comparação entre as vendas reais e as previsões realizadas pelos modelos A e B nos 10 registros de validação.
-
-![Comparação dos modelos](resultados/02_comparacao_validacao.png)
-
-## Resultados obtidos
-
-Após o treinamento e a avaliação dos modelos, foram obtidos os seguintes resultados:
+Na validação, o Modelo B foi selecionado por apresentar menor MAE:
 
 | Métrica | Modelo A | Modelo B |
-|---|---:|---:|
-| MAE na validação | 14,40 | 5,22 |
-| Modelo selecionado | Não | Sim |
+|:--|--:|--:|
+| MAE na validação | 14,40 | **5,22** |
+| Selecionado | Não | **Sim** |
 
-O Modelo B apresentou um desempenho superior na validação, com um erro absoluto médio de aproximadamente **5,22 unidades**, contra 14,40 unidades do Modelo A.
+O Modelo B obteve MAE de aproximadamente **6,23 unidades** no conjunto de teste. Para um cenário com publicidade de **R$ 300,00** e desconto de **10%**, a previsão foi de aproximadamente **129,71 unidades**.
 
-Com base nesse resultado, o Modelo B foi selecionado para a avaliação final.
+### Visualizações
 
-### Avaliação no conjunto de teste
+**Dados de treinamento** — relação entre investimento em publicidade e vendas nos registros de treino.
 
-O modelo escolhido apresentou um MAE de aproximadamente **6,23 unidades** no conjunto de teste, composto pelos 10 registros finais.
+![Gráfico dos dados de treinamento](resultados/01_dados_treino.png)
 
-### Nova previsão
+**Comparação na validação** — vendas reais e previsões dos dois modelos.
 
-Após a avaliação, foi realizada uma previsão para o seguinte cenário hipotético:
+![Gráfico de comparação dos modelos na validação](resultados/02_comparacao_validacao.png)
 
-| Variável | Valor |
-|---|---:|
-| Investimento em publicidade | R$ 300,00 |
-| Desconto | 10% |
-| Vendas estimadas | 129,71 unidades |
+## 📦 Arquivos gerados
 
-## Arquivos gerados
+| Arquivo | Conteúdo |
+|:--|:--|
+| `01_dados_treino.png` | Gráfico dos dados usados no treinamento. |
+| `02_comparacao_validacao.png` | Gráfico de vendas reais e previsões na validação. |
+| `comparacao_validacao.csv` | Previsões e erros dos modelos na validação. |
+| `resultado_teste.csv` | Previsões do modelo escolhido no conjunto de teste. |
 
-Ao executar o programa, são gerados automaticamente:
+## ⚠️ Limitações
 
-| Arquivo | Descrição |
-|---|---|
-| `01_dados_treino.png` | Visualização dos dados utilizados no treinamento. |
-| `02_comparacao_validacao.png` | Comparação entre vendas reais e previsões. |
-| `comparacao_validacao.csv` | Tabela de previsões e erros dos modelos na validação. |
-| `resultado_teste.csv` | Resultados do modelo escolhido no conjunto de teste. |
+- A base é simulada e pequena (60 registros).
+- A divisão entre treino, validação e teste é fixa.
+- O experimento considera apenas modelos de regressão linear.
+- A melhora observada não comprova uma relação causal entre descontos e aumento das vendas; os resultados não garantem desempenho em cenários reais.
 
-## Considerações e limitações
+O foco é demonstrar o fluxo de preparação dos dados, treinamento, comparação e avaliação de modelos preditivos.
 
-O experimento demonstra como a inclusão de novas variáveis pode contribuir para melhorar o desempenho de um modelo de Machine Learning.
-
-Entretanto, os resultados devem ser interpretados considerando algumas limitações:
-
-- A base de dados é simulada e possui apenas 60 registros.
-- A divisão entre treinamento, validação e teste é fixa.
-- A análise utiliza exclusivamente modelos de regressão linear.
-- Os resultados não garantem o mesmo desempenho em cenários comerciais reais.
-- A melhoria observada não comprova, por si só, uma relação de causalidade entre descontos e aumento das vendas.
-
-O objetivo principal é compreender o processo de construção, treinamento, comparação e avaliação de modelos preditivos.
-
-## Autor
+## 👤 Autor
 
 **Gabriel Rodrigues Alves**
 
